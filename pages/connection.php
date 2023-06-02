@@ -1,14 +1,12 @@
 <?php
-    $servername = "localhost";
-    $user = "root";
-    $pass = "";
-    $dbname = "fashionweb";
+$servername = "localhost";
+$user = "root";
+$pass = "";
+$dbname = "datawarehouse";
 
-    $conn = new mysqli($servername, $user, $pass, $dbname);
+$conn = new mysqli($servername, $user, $pass, $dbname);
 
-    if($conn->connect_error) {
-        die("Connection failed: ". $conn->connect_error);
-    }
- 
-
+if ($conn->connect_error) {
+    echo "Koneksi gagal: " . $conn->connect_error;
+}
 ?>

@@ -12,6 +12,74 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+
+<?php
+include 'connection.php';
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//   // Ambil data dari form
+//   if (isset($_POST['formPRODUCT_ID']) || isset($_POST['insertForm'])) {
+//     $product_id = $_POST['PRODUCT_ID'];
+//     $category_id = $_POST['CATEGORY_ID'];
+//     $product_name = $_POST['PRODUCT_NAME'];
+//     $product_stock = $_POST['PRODUCT_STOCK'];
+//     $product_price = $_POST['PRODUCT_PRICE'];
+//     $product_detail = $_POST['PRODUCT_DETAIL'];
+//     $product_url = $_POST['PRODUCT_URL'];
+//     $delete_product = $_POST['DELETE_PRODUCT'];
+
+//     // Lakukan operasi SQL INSERT INTO product
+//     if (isset($_POST['formPRODUCT_ID'])) {
+//       $sql = "UPDATE product SET CATEGORY_ID = '$category_id', PRODUCT_NAME = '$product_name', PRODUCT_STOCK = '$product_stock', PRODUCT_PRICE = '$product_price', PRODUCT_DETAIL = '$product_detail', PRODUCT_URL = '$product_url', DELETE_PRODUCT = '$delete_product' WHERE PRODUCT_ID = '$product_id'";
+//       $conn->query($sql);
+//     }
+//     if (isset($_POST['insertForm'])) {
+//       $sql = "INSERT INTO product VALUES ('" . strtoupper($product_id) . "', '" . strtoupper($category_id) . "', '" . strtoupper($product_name) . "', '" . strtoupper($product_stock) . "', '" . strtoupper($product_price) . "', '" . strtoupper($product_detail) . "', '" . strtoupper($product_url) . "', '" . strtoupper($delete_product) . "')";
+//       $conn->query($sql);
+//     }
+//   }
+//   if (isset($_POST['formDELIVERY_ID']) || isset($_POST['insertFormDeliv'])) {
+//     $DELIVERY_ID = $_POST['DELIVERY_ID'];
+//     $DELIVERY_NAME = $_POST['DELIVERY_NAME'];
+//     $DELIVERY_WEIGHT = $_POST['DELIVERY_WEIGHT'];
+//     $DELIVERY_COST = $_POST['DELIVERY_COST'];
+//     $DELIVERY_STATUS = $_POST['DELIVERY_STATUS'];
+//     $DELETE_DELIVERY = $_POST['DELETE_DELIVERY'];
+
+//     if (isset($_POST['formDELIVERY_ID'])) {      
+//       $sql = "UPDATE DELIVERY SET DELIVERY_NAME = '$DELIVERY_NAME', DELIVERY_WEIGHT = '$DELIVERY_WEIGHT', DELIVERY_COST = '$DELIVERY_COST', DELIVERY_STATUS = '$DELIVERY_STATUS', DELETE_DELIVERY = '$DELETE_DELIVERY' WHERE DELIVERY_ID = '$DELIVERY_ID'";
+//       $conn->query($sql);
+//     }
+//     if (isset($_POST['insertFormDeliv'])) {
+//       $sql = "INSERT INTO DELIVERY VALUES ('" . strtoupper($DELIVERY_ID) . "', '" . strtoupper($DELIVERY_NAME) . "', '" . strtoupper($DELIVERY_WEIGHT) . "', '" . strtoupper($DELIVERY_COST) . "', '" . strtoupper($DELIVERY_STATUS) . "', '" . strtoupper($DELETE_DELIVERY) . "')";
+//       $conn->query($sql);
+//     }
+//   }
+//   if (isset($_POST['formVOUCHER_ID']) || isset($_POST['insertFormVoucher'])) {
+//     $VOUCHER_ID = $_POST['VOUCHER_ID'];
+//     $VOUCHER_NAME = $_POST['VOUCHER_NAME'];
+//     $DISCOUNT = $_POST['DISCOUNT'];
+//     $DELETE_VOUCHER = $_POST['DELETE_VOUCHER'];
+
+
+//     if (isset($_POST['formVOUCHER_ID'])) {      
+//       $sql = "UPDATE VOUCHER SET VOUCHER_ID = '$VOUCHER_ID', VOUCHER_NAME = '$VOUCHER_NAME', DISCOUNT = '$DISCOUNT', DELETE_VOUCHER = '$DELETE_VOUCHER' WHERE VOUCHER_ID = '$VOUCHER_ID'";
+//       $conn->query($sql);
+//     }
+//     if (isset($_POST['insertFormVoucher'])) {
+//       $sql = "INSERT INTO VOUCHER VALUES ('" . strtoupper($VOUCHER_ID) . "', '" . strtoupper($VOUCHER_NAME) . "', '" . strtoupper($DISCOUNT) . "', '" . strtoupper($DELETE_VOUCHER) . "')";    
+//       $conn->query($sql);
+//     }
+//   }
+//   if (isset($_POST['delForm'])) {
+//     $id = reset($_POST);
+//     $col_name = key($_POST);
+//     $table_name = substr($col_name, 0, strpos($col_name, "_"));
+//     $sql = "DELETE FROM $table_name WHERE $col_name = '$id'";
+//     $conn->query($sql);
+//   }
+
+// }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +89,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Soft UI Dashboard by Creative Tim
+    Ever After Admin Website
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -36,6 +104,15 @@
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/moment-2.18.1/dt-1.13.4/b-2.3.6/date-1.4.1/sl-1.6.2/datatables.min.css">
+  <link rel="stylesheet" type="text/css" href="css/generator-base.css">
+  <link rel="stylesheet" type="text/css" href="css/editor.dataTables.min.css">
+
+  <script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/v/dt/jqc-1.12.4/moment-2.18.1/dt-1.13.4/b-2.3.6/date-1.4.1/sl-1.6.2/datatables.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/dataTables.editor.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/table.cust.js"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -67,7 +144,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
+            <span class="nav-link-text ms-1">Branch Sales</span>
           </a>
         </li>
         <li class="nav-item">
@@ -87,7 +164,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Tables</span>
+            <span class="nav-link-text ms-1">Customer Sales</span>
           </a>
         </li>
         <li class="nav-item">
@@ -107,11 +184,71 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Billing</span>
+            <span class="nav-link-text ms-1">Total Order each product</span>
           </a>
         </li>
-        
-        <li class="nav-item mt-3">
+        <li class="nav-item">
+          <a class="nav-link  active" href="../pages/tables.html">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>office</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g transform="translate(1716.000000, 291.000000)">
+                      <g id="office" transform="translate(153.000000, 2.000000)">
+                        <path class="color-background opacity-6" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
+                        <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Product Stock</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  active" href="../pages/tables.html">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>office</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g transform="translate(1716.000000, 291.000000)">
+                      <g id="office" transform="translate(153.000000, 2.000000)">
+                        <path class="color-background opacity-6" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
+                        <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Total Discount</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  active" href="../pages/tables.html">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>office</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g transform="translate(1716.000000, 291.000000)">
+                      <g id="office" transform="translate(153.000000, 2.000000)">
+                        <path class="color-background opacity-6" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
+                        <path class="color-background" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Product Stock</span>
+          </a>
+        </li>
+
+        <!-- <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
@@ -176,15 +313,15 @@
             </div>
             <span class="nav-link-text ms-1">Sign Up</span>
           </a>
-        </li>
+        </li> -->
       </ul>
     </div>
-   
+
   </aside>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-      <div class="container-fluid py-1 px-3">
+      <div class="container-fluid con-tables py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
@@ -200,7 +337,7 @@
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
-          
+
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
@@ -299,427 +436,384 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    <div class="container-fluid py-4">
+    <div class="container-fluid con-tables py-4">
+      <!-- VIEW1 -->
       <div class="row">
         <div class="col-12">
-          <div class="card mb-4">
-            <div class="card-header pb-0">
-              <h6>Authors table</h6>
+          <div class="card container-tables mb-4">
+            <div class="card-header px-1 py-2">
+              <h5>Branch Sales</h5>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
+              <div class="table-responsive p-0 tabel">
+                <table cellpadding="0" cellspacing="0" border="0" class="display" id="view1" width="100%">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
-                      <th class="text-secondary opacity-7"></th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">BRANCH NAME</th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">TOTAL ORDER</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Organization</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Programator</p>
-                        <p class="text-xs text-secondary mb-0">Developer</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="user3">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                            <p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Executive</p>
-                        <p class="text-xs text-secondary mb-0">Projects</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user4">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Michael Levi</h6>
-                            <p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Programator</p>
-                        <p class="text-xs text-secondary mb-0">Developer</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user5">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Richard Gran</h6>
-                            <p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Executive</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="user6">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                            <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Programtor</p>
-                        <p class="text-xs text-secondary mb-0">Developer</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
+                    <?php
+                    $sql = "SELECT * FROM view1_SumBranch";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                      $response = array();
+                      while ($row = $result->fetch_assoc()) {
+                        $dt['branchName'] = $row["branch_name"];
+                        $dt['totalOrder'] = $row["total_order"];
+                        array_push($response, $dt);
+                      }
+
+                      $hasil_json = json_encode($response);
+                      $data = json_decode($hasil_json, true);
+                      for ($i = 0; $i < count($data); $i++) {
+                    ?>
+                        <tr class='trproduct'>
+                          <td>
+                            <div class='d-flex flex-column justify-content-center'>
+                              <h6 class='mb-0 text-xs text-center branch_name'><?php echo $data[$i]["branchName"]; ?></h6>
+                            </div>
+                          </td>
+                          <td class='align-middle text-center text-sm'>
+                            <p class='text-xs font-weight-bold mb-0'><?php echo $data[$i]["totalOrder"]; ?></p>
+                          </td>
+                        </tr>
+                      <?php } ?>
+                    <?php } ?>
                   </tbody>
                 </table>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+      <!-- VIEW2 -->
       <div class="row">
         <div class="col-12">
-          <div class="card mb-4">
-            <div class="card-header pb-0">
-              <h6>Projects table</h6>
+          <div class="card container-tables mb-4">
+            <div class="card-header px-1 py-2">
+              <h5>Customer Sales</h5>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center justify-content-center mb-0">
+              <div class="table-responsive p-0 tabel">
+                <table cellpadding="0" cellspacing="0" border="0" class="display" id="customer" width="100%">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Budget</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Completion</th>
-                      <th></th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">BRANCH NAME</th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">CUSTOMER NAME</th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">QTY</th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">PRODUCT PRICE</th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">TOTAL ORDER</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2">
-                          <div>
-                            <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm">Spotify</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">$2,500</p>
-                      </td>
-                      <td>
-                        <span class="text-xs font-weight-bold">working</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">60%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                    <?php
+                    $sql = "SELECT * FROM view2_SumCust";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                      while ($row = $result->fetch_assoc()) {
+                        $branchName = $row["branch_name"];
+                        $customerName = $row["customer_name"];
+                        $qty = $row["QTY"];
+                        $productPrice = $row["product_price"];
+                        $totalOrder = $row["total_order"];
+                    ?>
+                        <tr class="trproduct">
+                          <td>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-xs text-center branch_name"><?php echo $branchName; ?></h6>
                             </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2">
-                          <div>
-                            <img src="../assets/img/small-logos/logo-invision.svg" class="avatar avatar-sm rounded-circle me-2" alt="invision">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm">Invision</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">$5,000</p>
-                      </td>
-                      <td>
-                        <span class="text-xs font-weight-bold">done</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">100%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-xs text-center customer_name"><?php echo $customerName; ?></h6>
                             </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2">
-                          <div>
-                            <img src="../assets/img/small-logos/logo-jira.svg" class="avatar avatar-sm rounded-circle me-2" alt="jira">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm">Jira</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">$3,400</p>
-                      </td>
-                      <td>
-                        <span class="text-xs font-weight-bold">canceled</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">30%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="30" style="width: 30%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2">
-                          <div>
-                            <img src="../assets/img/small-logos/logo-slack.svg" class="avatar avatar-sm rounded-circle me-2" alt="slack">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm">Slack</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">$1,000</p>
-                      </td>
-                      <td>
-                        <span class="text-xs font-weight-bold">canceled</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">0%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0" style="width: 0%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2">
-                          <div>
-                            <img src="../assets/img/small-logos/logo-webdev.svg" class="avatar avatar-sm rounded-circle me-2" alt="webdev">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm">Webdev</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">$14,000</p>
-                      </td>
-                      <td>
-                        <span class="text-xs font-weight-bold">working</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">80%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width: 80%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2">
-                          <div>
-                            <img src="../assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm rounded-circle me-2" alt="xd">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm">Adobe XD</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">$2,300</p>
-                      </td>
-                      <td>
-                        <span class="text-xs font-weight-bold">done</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">100%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
-                      </td>
-                    </tr>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?php echo $qty; ?></p>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?php echo $productPrice; ?></p>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?php echo $totalOrder; ?></p>
+                          </td>
+                        </tr>
+                    <?php
+                      }
+                    }
+                    ?>
                   </tbody>
                 </table>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- VIEW3 -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card container-tables mb-4">
+            <div class="card-header px-1 py-2">
+              <h5>Total Order each product</h5>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0 tabel">
+                <table cellpadding="0" cellspacing="0" border="0" class="display" id="customer2" width="100%">
+                  <thead>
+                    <tr>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">BRANCH NAME</th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">PRODUCT NAME</th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">TOTAL ORDER</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $sql = "SELECT * FROM view3_Sumprod";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                      while ($row = $result->fetch_assoc()) {
+                        $branchName = $row["branch_name"];
+                        $productName = $row["product_name"];
+
+                        $totalOrder = $row["total_order"];
+                    ?>
+                        <tr class="trproduct">
+                          <td>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-xs text-center branch_name"><?php echo $branchName; ?></h6>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-xs text-center customer_name"><?php echo $productName; ?></h6>
+                            </div>
+                          </td>
+
+                          <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?php echo $totalOrder; ?></p>
+                          </td>
+                        </tr>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </tbody>
+                </table>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- VIEW4 -->
+       <div class="row">
+        <div class="col-12">
+          <div class="card container-tables mb-4">
+            <div class="card-header px-1 py-2">
+              <h5>Product Stock</h5>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0 tabel">
+                <table cellpadding="0" cellspacing="0" border="0" class="display" id="stock" width="100%">
+                  <thead>
+                    <tr>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">BRANCH NAME</th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">PRODUCT NAME</th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">PRODUCT STOCK</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $sql = "SELECT * FROM view4_SumBranchProd";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                      while ($row = $result->fetch_assoc()) {
+                        $branchName = $row["branch_name"];
+                        $productName = $row["product_name"];
+                        $productStock = $row["product_stock"];
+                    ?>
+                        <tr class="trproduct">
+                          <td>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-xs text-center branch_name"><?php echo $branchName; ?></h6>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-xs text-center customer_name"><?php echo $productName; ?></h6>
+                            </div>
+                          </td>
+
+                          <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?php echo $productStock; ?></p>
+                          </td>
+                        </tr>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </tbody>
+                </table>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!-- VIEW5 -->
+       <div class="row">
+        <div class="col-12">
+          <div class="card container-tables mb-4">
+            <div class="card-header px-1 py-2">
+              <h5>Total Discount each Branch</h5>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0 tabel">
+                <table cellpadding="0" cellspacing="0" border="0" class="display" id="voucher" width="100%">
+                  <thead>
+                    <tr>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">BRANCH NAME</th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">TOTAL POTONGAN</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $sql = "SELECT * FROM view5_Prod";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                      while ($row = $result->fetch_assoc()) {
+                        $branchName = $row["branch_name"];
+                        $totalPotongan = $row["sum(fo.total_potongan)"];
+                    ?>
+                        <tr class="trproduct">
+                          <td>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-xs text-center branch_name"><?php echo $branchName; ?></h6>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-xs text-center customer_name"><?php echo $totalPotongan; ?></h6>
+                            </div>
+                          </td>
+
+                     
+                        </tr>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </tbody>
+                </table>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+                         <!-- VIEW6 -->
+       <div class="row">
+        <div class="col-12">
+          <div class="card container-tables mb-4">
+            <div class="card-header px-1 py-2">
+              <h5>Product Stock</h5>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0 tabel">
+                <table cellpadding="0" cellspacing="0" border="0" class="display" id="order" width="100%">
+                  <thead>
+                    <tr>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">BRANCH NAME</th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">PRODUCT NAME</th>
+                      <th class="text-center text-uppercase text-dark text-xxs font-weight-bolder opacity-10">PRODUCT STOCK</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $sql = "SELECT * FROM view6_Prod";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                      while ($row = $result->fetch_assoc()) {
+                        $branchName = $row["branch_name"];
+                        $customerName = $row["customer_name"];
+                        $productName = $row["product_name"];
+                        
+                    ?>
+                        <tr class="trproduct">
+                          <td>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-xs text-center branch_name"><?php echo $branchName; ?></h6>
+                            </div>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0"><?php echo $customerName; ?></p>
+                          </td>
+                          <td>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-xs text-center customer_name"><?php echo $productName; ?></h6>
+                            </div>
+                          </td>
+                        </tr>
+                    <?php
+                      }
+                    }
+                    ?>
+                  </tbody>
+                </table>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <?php $conn->close(); ?>
+
+
       <footer class="footer pt-3  ">
-        <div class="container-fluid">
+        <div class="container-fluid con-tables">
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
               <div class="copyright text-center text-sm text-muted text-lg-start">
@@ -818,12 +912,85 @@
       </div>
     </div>
   </div>
+
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script>
+    console.log("halo lagi catherine ");
+    $(document).ready(function() {
+      $('#view1').DataTable();
+      $('#customer').DataTable();
+      $('#customer2').DataTable();
+      $('#stock').DataTable();
+      $('#voucher').DataTable();
+      $('#order').DataTable();
+      console.log("hlaoooo");
+    });
+
+    // $('.editProduct').click(function() {
+    //   $('.g-sidenav-show ').css('overflow', 'hidden');
+    //   let product_id;
+    //   if ($(this).closest('tr').hasClass('trproduct')) {
+    //     namatabel = "PRODUCT";
+    //     product_id = $(this).closest('tr').find('.product_id').text();
+    //   } else if ($(this).closest('tr').hasClass('trdeliv')) {
+    //     namatabel = "DELIVERY";
+    //     product_id = $(this).closest('tr').find('.delivery_id').text();
+    //   }else if ($(this).closest('tr').hasClass('trvoucher')) {
+    //     namatabel = "VOUCHER";
+    //     product_id = $(this).closest('tr').find('.voucher_id').text();
+    //   };
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "modal.php",
+    //     data: {
+    //       productid: product_id,
+    //       tablename: namatabel
+    //     },
+    //     success: function(response) {
+    //       $(".modal-dialog").html(response).show();
+    //       $('.formDel').css('display', 'none');
+    //     }
+    //   });
+    // });
+
+    $('.delProduct').click(function() {
+      // Mengambil isi dari elemen span yang merupakan sibling dari elemen .img-cap yang sama
+      let namatabel;
+      let product_id;
+      if ($(this).closest('tr').hasClass('trproduct')) {
+        namatabel = "PRODUCT";
+        product_id = $(this).closest('tr').find('.product_id').text();
+      } else if ($(this).closest('tr').hasClass('trdeliv')) {
+        namatabel = "DELIVERY";
+        product_id = $(this).closest('tr').find('.delivery_id').text();
+        console.log(product_id);
+      } else if ($(this).closest('tr').hasClass('trvoucher')) {
+        namatabel = "VOUCHER";
+        product_id = $(this).closest('tr').find('.voucher_id').text();
+      };
+      $.ajax({
+        type: "POST",
+        url: "modal.php",
+        data: {
+          productid: product_id,
+          tablename: namatabel
+        },
+        success: function(response) {
+          // Menampilkan div dengan hasil respons di dalamnya
+          console.log(response);
+          $(".modal-dialog").html(response).show();
+          $('.formDel').css('display', 'block');
+          $('.formEdit').css('display', 'none');
+
+        }
+      });
+    });
+
+
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
       var options = {
